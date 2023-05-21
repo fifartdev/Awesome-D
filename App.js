@@ -1,14 +1,39 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const HomeScreen = ({ navigation }) => {
+  return (
+    <View style={styles.container}>
+      <Text>Welcome to Home</Text>
+      <Button
+        title="Go to Extra"
+        onPress={() => navigation.navigate("Extra")}
+      />
+      <StatusBar style="auto" />
+    </View>
+  );
+};
+
+const ExtraScreen = ({ navigation }) => {
+  return (
+    <View style={styles.container}>
+      <Text>Welcome to Extra</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
+};
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Extra" component={ExtraScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
@@ -16,7 +41,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
