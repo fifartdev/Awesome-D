@@ -4,19 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import LoginScreen from "./screens/LoginScreen";
-
-const HomeScreen = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
-      <Text>Welcome to Home</Text>
-      <Button
-        title="Go to Extra"
-        onPress={() => navigation.navigate("Extra")}
-      />
-      <StatusBar style="auto" />
-    </View>
-  );
-};
+import HomeScreen from "./screens/HomeScreen";
 
 const ExtraScreen = ({ navigation }) => {
   return (
@@ -33,8 +21,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Extra" component={ExtraScreen} />
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
