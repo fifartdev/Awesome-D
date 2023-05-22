@@ -1,5 +1,6 @@
 import {
   Alert,
+  Button,
   KeyboardAvoidingView,
   StyleSheet,
   Text,
@@ -15,6 +16,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
+import LottieView from "lottie-react-native";
 import { auth } from "../firebase";
 
 export default function LoginScreen() {
@@ -51,6 +53,8 @@ export default function LoginScreen() {
         // ..
         if (errorCode === "auth/invalid-email") {
           Alert.alert("Invalid Email");
+        } else {
+          Alert.alert("Password is Weak");
         }
       });
   };
@@ -81,7 +85,16 @@ export default function LoginScreen() {
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
-      <View>
+      <LottieView
+        autoPlay
+        style={{
+          width: 200,
+          height: 200,
+        }}
+        // Find more Lottie files at https://lottiefiles.com/featured
+        source={require("../assets/140973-wall-e-loading-animation.json")}
+      />
+      <View style={{ width: "100%", alignItems: "center" }}>
         <TextInput
           value={email}
           onChangeText={(text) => setEmail(text)}
@@ -110,6 +123,10 @@ export default function LoginScreen() {
         >
           <Text style={styles.buttonTxtReg}>Register</Text>
         </TouchableOpacity>
+        <Button
+          title="Forgot Password?"
+          onPress={() => navigation.navigate("Forgot")}
+        />
       </View>
     </KeyboardAvoidingView>
   );
@@ -120,12 +137,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    width: "100%",
   },
   inputs: {
     backgroundColor: "#fff",
     marginVertical: 5,
     padding: 10,
-    width: 200,
+    width: "80%",
     borderRadius: 10,
   },
   buttonBgRegister: {
@@ -138,6 +156,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     marginVertical: 5,
+    width: "80%",
   },
   buttonBg: {
     width: 200,
@@ -147,6 +166,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     marginVertical: 5,
+    width: "80%",
   },
   buttonTxt: {
     color: "#fff",
@@ -156,5 +176,7 @@ const styles = StyleSheet.create({
   },
   btns: {
     marginTop: 20,
+    width: "100%",
+    alignItems: "center",
   },
 });

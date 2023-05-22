@@ -6,6 +6,7 @@ import {
   StatusBar,
 } from "react-native";
 import React from "react";
+import LottieView from "lottie-react-native";
 import { useNavigation } from "@react-navigation/native";
 import { getAuth } from "firebase/auth";
 import { auth } from "../firebase";
@@ -24,7 +25,16 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Welcome to Home</Text>
+      <LottieView
+        autoPlay
+        style={{
+          width: 200,
+          height: 200,
+        }}
+        // Find more Lottie files at https://lottiefiles.com/featured
+        source={require("../assets/144103-e-v-e.json")}
+      />
+      <Text>Hi !</Text>
       <Text style={{ fontWeight: "700", marginTop: 10 }}>
         {auth.currentUser.email}
       </Text>

@@ -5,15 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
-
-const ExtraScreen = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
-      <Text>Welcome to Extra</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-};
+import ForgotPasswordScreen from "./screens/ForgotPasswordScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,11 +19,17 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
+          name="Forgot"
+          component={ForgotPasswordScreen}
+          options={{ headerTitle: "Forgot your password?" }}
+        />
+        <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ headerTitle: "My Awesome App " }}
+          options={{ headerTitle: "My Awesome Demo App" }}
         />
       </Stack.Navigator>
+      <StatusBar style="auto" />
     </NavigationContainer>
   );
 }
