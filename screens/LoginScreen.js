@@ -123,10 +123,12 @@ export default function LoginScreen() {
         >
           <Text style={styles.buttonTxtReg}>Register</Text>
         </TouchableOpacity>
-        <Button
-          title="Forgot Password?"
+        <Text
+          style={{ color: "red" }}
           onPress={() => navigation.navigate("Forgot")}
-        />
+        >
+          Forgot Password?
+        </Text>
       </View>
     </KeyboardAvoidingView>
   );

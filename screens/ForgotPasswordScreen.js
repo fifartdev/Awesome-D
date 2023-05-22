@@ -16,11 +16,12 @@ import { auth } from "../firebase";
 export default function ForgotPasswordScreen() {
   const [email, setEmail] = useState("");
   const auth = getAuth();
-
+  const navigation = useNavigation();
   const handleForgot = () => {
     sendPasswordResetEmail(auth, email)
       .then(() => {
         Alert.alert("Reset Email sent to " + email);
+        navigation.replace("Login");
       })
       .catch((error) => {
         const errorCode = error.code;
