@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, Button, StatusBar } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { getAuth } from "firebase/auth";
@@ -22,7 +28,9 @@ const HomeScreen = () => {
       <Text style={{ fontWeight: "700", marginTop: 10 }}>
         {auth.currentUser.email}
       </Text>
-      <Button title="Logout" onPress={handleSignOut} />
+      <TouchableOpacity style={styles.buttonBg} onPress={handleSignOut}>
+        <Text style={styles.buttonTxt}>Logout</Text>
+      </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
   );
@@ -33,6 +41,18 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  buttonBg: {
+    width: 200,
+    backgroundColor: "blue",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
+    borderRadius: 10,
+    marginVertical: 5,
+  },
+  buttonTxt: {
+    color: "#fff",
   },
 });
 

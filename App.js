@@ -26,7 +26,11 @@ export default function App() {
           component={LoginScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerTitle: "My Awesome App " }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
